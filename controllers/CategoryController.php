@@ -1,6 +1,6 @@
 <?php
 
-require 'AbstractController.php';
+require_once 'AbstractController.php';
 
 class CategoryController extends AbstractController {
     private CategoryManager $manager;
@@ -10,15 +10,15 @@ class CategoryController extends AbstractController {
         $this->manager = $manager;
     }
     
-    public function index()
+    public function indexCategory()
     {
         $categories = $this->manager->getAllCategories();
-        $this->render('index.phtml', $categories);
+        $this->render('admin/category/index.phtml', $categories);
     }
     
-    public function create(array $post)
+    public function createCategory(array $post)
     {
-        $this->render('create.phtml', $categories);
+        $this->render('admin/category/create.phtml', $categories);
         
         if(isset($_POST['submit-create-category']))
         {
@@ -30,9 +30,9 @@ class CategoryController extends AbstractController {
         }
     }
     
-    public function edit(array $post)
+    public function editCategory(array $post)
     {
-        $this->render('edit.phtml', $post);
+        $this->render('admin/category/edit.phtml', $post);
         
         if(isset($_POST['submit-edit-category']))
         {

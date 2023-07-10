@@ -1,6 +1,6 @@
 <?php
 
-require 'AbstracManager.php';
+require_once 'AbstractManager.php';
 
 class ExpenseManager extends AbstractManager {
     
@@ -21,7 +21,7 @@ class ExpenseManager extends AbstractManager {
         
         $result = $query->fetch(PDO::FETCH_ASSOC);
         $category = getCatById($result['category_id']);
-        $expense = new Expense($result['name'], $result['amount'], $category, );
+        $expense = new Expense($result['name'], $result['amount'], $category);
         
         return $expense;
     }

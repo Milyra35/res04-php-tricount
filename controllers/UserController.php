@@ -1,6 +1,6 @@
 <?php
 
-require 'AbstractController.php';
+require_once 'AbstractController.php';
 
 class UserController extends AbstractController {
     private UserManager $manager;
@@ -10,13 +10,13 @@ class UserController extends AbstractController {
         $this->manager = $manager;
     }
     
-    public function index()
+    public function indexUsers()
     {
         $users = $this->manager->getAllUsers();
         $this->render('users/index.phtml', $users);
     }
     
-    public function create(array $post)
+    public function createUsers(array $post)
     {
         $this->render('users/create.phtml', $post);
         
@@ -31,7 +31,7 @@ class UserController extends AbstractController {
         }
     }
     
-    public function edit(array $post)
+    public function editUsers(array $post)
     {
         $this->render('users/edit.phtml', $post);
         //var_dump($_POST);

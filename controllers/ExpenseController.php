@@ -1,6 +1,6 @@
 <?php
 
-require 'AbstractController.php';
+require_once 'AbstractController.php';
 
 class ExpenseController extends AbstractController {
     private ExpenseManager $manager;
