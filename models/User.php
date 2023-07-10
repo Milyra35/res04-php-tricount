@@ -60,6 +60,19 @@ class User {
     {
         $this->expenses = $expenses;
     }
+    
+    public function addExpense(Expense $expense) : array
+    {
+        array_push($this->expenses, $expense);
+        return $this->expenses;
+    }
+    
+    public function removeExpense(Expense $expense) : array
+    {
+        $index = array_search($expense, $index);
+        array_splice($this->expenses, $index, 1);
+        return $this->expenses;
+    }
 }
 
 ?>
