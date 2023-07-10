@@ -22,11 +22,11 @@ class ExpenseController extends AbstractController {
         
         if(isset($_POST['submit-create-expense']))
         {
-            if(!empty($post['name']))
+            if(!empty($post['name']) && !empty($post['amount']) && !empty($post['category']))
             {
-                $category = new Category($post['name']);
+                $expense = new Expense($post['name'], $post['amount'], $post['category']);
             }
-            $this->manager->insertCategory($category);
+            $this->manager->insertExpense($expense);
         }
     }
     
@@ -34,15 +34,15 @@ class ExpenseController extends AbstractController {
     {
         $this->render('edit.phtml', $post);
         
-        if(isset($_POST['submit-edit-category']))
+        if(isset($_POST['submit-edit-expense']))
         {
-            if(!empty($post['name']))
+            if(!empty($post['name']) && !empty($post['amount']) && !empty($post['category']))
             {
-                $newCat = new Category($post['name']);
-                $newCat->setId($post['id']);
+                $newExp = new Expense($post['name'], $post['amount'], $post['category']);
+                $newExp->setId($post['id']);
             }
             
-            $this->manager->editCategory($newCat);
+            $this->manager->editExpense($newExp);
         }
     }
 }

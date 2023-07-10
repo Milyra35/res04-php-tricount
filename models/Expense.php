@@ -3,15 +3,19 @@
 class Expense {
     private ?int $id;
     private string $name;
-    private float $amount;
+    private int $amount;
     private Category $category;
+    private User $user;
+    private array $debt;
     
-    public function __construct(string $name, float $amount, Category $category)
+    public function __construct(string $name, int $amount, Category $category, User $user)
     {
         $this->id = null;
         $this->name = $name;
         $this->amount = $amount;
         $this->category = $category;
+        $this->user = $user;
+        $this->debt = [];
     }
     
     public function getId() : ?int
@@ -32,11 +36,11 @@ class Expense {
         $this->name = $name;
     }
     
-    public function getAmount() : float
+    public function getAmount() : int
     {
         return $this->amount = $amount;
     }
-    public function setAmount(float $amount) : void
+    public function setAmount(int $amount) : void
     {
         $this->amount = $amount;
     }
@@ -50,6 +54,28 @@ class Expense {
         $this->category = $category;
     }
     
+    public function getUser() : User
+    {
+        return $this->user;
+    }
+    public function setUser(User $user) : void
+    {
+        $this->user = $user;
+    }
+    
+    public function getDebt() : array
+    {
+        return $this->debt;
+    }
+    public function setDebt(array $debt) : void
+    {
+        $this->debt = $debt;
+    }
+    
+    public function addDebt()
+    {
+        
+    }
 }
 
 ?>
